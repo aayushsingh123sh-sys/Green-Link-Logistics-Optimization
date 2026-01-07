@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import os
 
-# Create the data
 rows = 1000
 data = {
     'OrderID': range(1001, 1001 + rows),
@@ -15,11 +14,9 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Inject errors for the "Cleaning" phase
-df.iloc[0:10, 5] = np.nan # Missing costs
-df.iloc[20:25, 4] = -99   # Impossible weights
+df.iloc[0:10, 5] = np.nan 
+df.iloc[20:25, 4] = -99
 
-# Ensure the data folder exists and save
 os.makedirs('data', exist_ok=True)
 df.to_csv('data/logistics_data_raw.csv', index=False)
 
